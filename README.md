@@ -3,7 +3,6 @@
 
 A WhatsApp-themed chat interface for an e-learning virtual tutor assistant, powered by Google Gemini AI.
 
-![Screenshot of the WhatsApp-themed E-Learning Chat Interface](https://via.placeholder.com/400x700/075E54/FFFFFF?text=E-Learning+WhatsApp+Chat)
 
 ## Features
 
