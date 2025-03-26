@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Learning WhatsApp Chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Add marked.js for markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="whatsapp-theme.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chatbot-container {
+            width: 400px;
+            height: 85vh;
+            max-height: 700px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 1px 1px 0 rgba(0,0,0,0.06), 0 2px 5px 0 rgba(0,0,0,0.2);
+            background-color: #f0f2f5;
+        }
+
+        @media (max-width: 480px) {
+            .chatbot-container {
+                width: 100%;
+                height: 100vh;
+                max-height: 100vh;
+                border-radius: 0;
+            }
+        }
+
+        .whatsapp-background {
+            background-color: #e5ddd5;
+            background-image: url('https://web.whatsapp.com/img/bg-chat-tile-light_04fcacde539c58cca6745483d4858c52.png');
+        }
+
+        .chatbot-header {
+            background-color: #075E54;
+            color: white;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .chatbot-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: transparent;
+        }
+
+        .chatbot-input-container {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-top: 1px solid #d8d8d8;
+            display: flex;
+            align-items: center;
+        }
+
+        .chatbot-input {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            background-color: white;
+            border-radius: 21px;
+            padding: 0 6px 0 12px;
+        }
+
+        #chatbot-input {
+            flex: 1;
+            border: none;
+            padding: 9px 12px;
+            outline: none;
+            background-color: transparent;
+            font-size: 15px;
+        }
+
+        #send-btn {
+            background-color: #25D366;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        #send-btn:hover {
+            background-color: #1faa4b;
+        }
+
+        /* Style for emoji and attachment buttons */
+        .input-actions {
+            display: flex;
+            align-items: center;
+            margin-right: 5px;
+        }
+
+        .input-action-btn {
+            color: #919191;
+            background: none;
+            border: none;
+            font-size: 24px;
+            padding: 0 8px;
+            cursor: pointer;
+        }
+
+        .input-action-btn:hover {
+            color: #075E54;
+        }
+
+        /* WhatsApp style category chips */
+        .category-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .category-chip {
+            background-color: white;
+            color: #075E54;
+            border: 1px solid #25D366;
+            border-radius: 15px;
+            padding: 6px 12px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .category-chip:hover {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .subject-icon {
+            font-size: 12px;
+        }
+
+        /* Date separator styling */
+        .date-separator {
+            text-align: center;
+            margin: 10px 0;
+            font-size: 12px;
+            color: #666;
+            background-color: rgba(225,245,254,.92);
+            width: fit-content;
+            margin: 10px auto;
+            padding: 5px 12px;
+            border-radius: 7px;
+            box-shadow: 0 1px 0.5px rgba(0,0,0,.13);
+        }
+    </style>
+</head>
+<body>
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <!-- Header will be populated by JS -->
+        </div>
+        <div id="chatbot-body" class="chatbot-body whatsapp-background">
+            <!-- Messages will appear here -->
+        </div>
+        <div class="chatbot-input-container">
+            <div class="chatbot-input">
+                <div class="input-actions">
+                    <button class="input-action-btn emoji-btn"><i class="far fa-smile"></i></button>
+                    <button class="input-action-btn attachment-btn"><i class="fas fa-paperclip"></i></button>
+                </div>
+                <input type="text" id="chatbot-input" placeholder="Type a message">
+                <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
